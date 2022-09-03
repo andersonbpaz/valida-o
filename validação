@@ -1,0 +1,12 @@
+pacman::p_load(data.table, dplyr, tidyverse, validate)
+
+str(starwars)
+starwars_selected <- starwars %>% select("name", "height", "mass")
+
+regras_starwars_selected <- validator(mass >= 50.0000, height >= 100)
+
+validacao_starwars_selected <- confront(starwars_selected, regras_starwars_selected)
+
+summary(validacao_starwars_selected)
+
+plot(validacao_starwars_selected)
